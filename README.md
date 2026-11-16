@@ -193,3 +193,7 @@ docker compose exec -T app php artisan test
 - Nginx only passes `index.php` to PHP-FPM and returns 404 for any other `.php` path (including under `/storage`).
 - Upload limits: nginx `client_max_body_size 100M`, PHP `post_max_size 100M`, `upload_max_filesize 25M`.
 - `queue` and `scheduler` run as root; the `app` container re-chowns `storage` and `bootstrap/cache` to `www-data` on every start.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

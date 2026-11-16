@@ -76,10 +76,6 @@
   - the HTML sanitizer.
 - **New factories:** Testplan, Assignment, Category, Comment and Notification. `UserFactory` gained `admin()` and `creator()` states.
 
-### Configuration / setup required
-- **Test database:** tests use the MySQL database `taskassign_test`. On a new environment, create it once:
-  `docker compose exec db mysql -uroot -p -e "CREATE DATABASE taskassign_test; GRANT ALL ON taskassign_test.* TO 'taskassign'@'%';"`
-- **Compose changes:** after pulling them, run `docker compose up -d --build`. This is non-destructive and keeps volumes.
-- **Optional `DB_ROOT_PASSWORD`:** separates the MySQL root password from the app password. It only applies to a fresh volume.
-- **`.env.example`:** `APP_URL` is now `http://localhost:8087`. For production, set `APP_DEBUG=false` and a strong `ADMIN_PASSWORD`.
-- **Ports:** phpMyAdmin, MySQL and Redis are now reachable only from localhost.
+### Upgrade notes
+
+- Run `php artisan migrate` after upgrading (adds indexes on `assignments` and `testplans`).
